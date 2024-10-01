@@ -1,10 +1,10 @@
 import React from 'react'
-
+import AppLayout from '../components/AppLayout';
 const Profile = () => {
   return (
-    <div>
+    <AppLayout>
       내 프로필
-    </div>
+    </AppLayout>
   )
 }
 
