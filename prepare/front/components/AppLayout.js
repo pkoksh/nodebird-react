@@ -16,10 +16,10 @@ const AppLayout = ({children}) => {
   return (
     <div>
       <Menu mode="horizontal">
-        <Menu.Item icon={<HomeOutlined />}><Link href="/"><a>노드버드</a></Link></Menu.Item>
-        <Menu.Item icon={<UserOutlined />}><Link href="/profile"><a>프로필</a></Link></Menu.Item>
-        <Menu.Item ><SearchInput enterButton/></Menu.Item>
-        <Menu.Item icon={<SignatureOutlined />}><Link href="/signup"><a>사용자등록</a></Link></Menu.Item>
+        <Menu.Item key='1' icon={<HomeOutlined />}><Link href="/"><a>노드버드</a></Link></Menu.Item>
+        <Menu.Item key='2' icon={<UserOutlined />}><Link href="/profile"><a>프로필</a></Link></Menu.Item>
+        <Menu.Item key='3' ><SearchInput enterButton/></Menu.Item>
+        <Menu.Item key='4' icon={<SignatureOutlined />}><Link href="/signup"><a>사용자등록</a></Link></Menu.Item>
       </Menu>
       <Row gutter={8}>
         <Col xs={24} md={6}>

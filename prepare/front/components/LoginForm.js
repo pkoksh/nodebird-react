@@ -1,26 +1,36 @@
-import React,{useState, useCallback} from 'react';
+import React,{useCallback} from 'react';
 import {Form, Input, Button} from 'antd';
 import Link from 'next/link';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import useInput from '../hooks/useInput.js';
 const ButtonWrapper = styled.div`
   margin-top: 10px;
+  text-align:center;
 `
-
+const FormWrapper = styled(Form)`
+  padding:3px 5px;
+`;
 const LoginForm = ({setIsLoggedIn}) => {
-  const [id,setId] = useState("pkoksh@naver.com");
-  const [password,setPassword] = useState("abcd1234");
-  const onChangeId = useCallback((e) => {
-    setId(e.target.value);
-  }, []);
-  const onChangePassword = useCallback((e) => {
-    setPassword(e.target.value);
-  }, []);
+  // 기존것을 custom Hook 으로 변경
+  // const [id,setId] = useState("pkoksh@naver.com");
+  // const onChangeId = useCallback((e) => {
+  //   setId(e.target.value);
+  // }, []);
+  const [id, onChangeId] = useInput("");
+
+  // const [password,setPassword] = useState("abcd1234");
+  // const onChangePassword = useCallback((e) => {
+  //   setPassword(e.target.value);
+  // }, []);
+  const [password, onChangePassword] = useInput("");
+
   const onSubmitForm = useCallback(() => {
     console.log(id,password);
     setIsLoggedIn(true);
   }, [id,password]);
   return (
-  <Form onFinish={onSubmitForm}>
+  <FormWrapper onFinish={onSubmitForm}>
     <div>
       <label htmlFor="user-id">아이디</label>
       <br />
@@ -35,7 +45,12 @@ const LoginForm = ({setIsLoggedIn}) => {
       <Button type="primary" htmlType="submit" loading={false}>로그인</Button>
       <Link href="/signup"><a><Button>회원가입</Button></a></Link>
     </ButtonWrapper>
-  </Form>
+  </FormWrapper>
   )
 }
+
+LoginForm.propTypes = {
+  setIsLoggedIn: PropTypes.func.isRequired,
+}
+
 export default LoginForm;
